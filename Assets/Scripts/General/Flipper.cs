@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Flipper : MonoBehaviour
 {
-    private readonly float _deagreeOfRotation = 180f;
+    private readonly float _rotationDegree = 180f;
 
     public void Flip(bool isFacingLeft)
     {
         if (isFacingLeft)
         {
-            transform.rotation = Quaternion.AngleAxis(_deagreeOfRotation, Vector3.up);
+            transform.rotation = Quaternion.AngleAxis(_rotationDegree, Vector3.up);
         }
         else
         {
