@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InputReciever : MonoBehaviour
@@ -8,11 +9,11 @@ public class InputReciever : MonoBehaviour
 
     public float Direction { get; private set; }
 
-    private void Update()
+    public void Input()
     {
-        Direction = Input.GetAxis(Horizontal);
+        Direction = UnityEngine.Input.GetAxis(Horizontal);
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (UnityEngine.Input.GetKeyDown(KeyCode.W))
             _isJump = true;
     }
 

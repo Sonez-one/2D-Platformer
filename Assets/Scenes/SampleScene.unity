@@ -136,8 +136,9 @@ GameObject:
   - component: {fileID: 14944127}
   - component: {fileID: 14944126}
   - component: {fileID: 14944125}
+  - component: {fileID: 14944130}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Patroller1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,8 +195,8 @@ MonoBehaviour:
   _waypoints:
   - {fileID: 528682878}
   - {fileID: 1912237405}
+  _flipper: {fileID: 14944130}
   _speed: 2
-  _enemySprite: {fileID: 14944129}
 --- !u!50 &14944127
 Rigidbody2D:
   serializedVersion: 4
@@ -310,6 +311,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &14944130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14944123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030a55d38bd043f448358900cae02dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &133013271
 GameObject:
   m_ObjectHideFlags: 0
@@ -5105,7 +5118,7 @@ MonoBehaviour:
   - {fileID: 300941820}
   - {fileID: 1815582312}
   - {fileID: 1904963525}
-  _fruitPrefab: {fileID: 8076923791892052580, guid: cbc31d0ab6cd45b488b5f73f5dfcafd7, type: 3}
+  _fruitPrefab: {fileID: 6683800949639495231, guid: cbc31d0ab6cd45b488b5f73f5dfcafd7, type: 3}
 --- !u!1 &1025901056
 GameObject:
   m_ObjectHideFlags: 0
@@ -5131,7 +5144,7 @@ Transform:
   m_GameObject: {fileID: 1025901056}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.06, y: -6.42, z: 0}
+  m_LocalPosition: {x: -4.1, y: -6.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7701,7 +7714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1141471414}
   m_Layer: 0
-  m_Name: Enemies
+  m_Name: Patrollers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7816,8 +7829,9 @@ GameObject:
   - component: {fileID: 1236419642}
   - component: {fileID: 1236419641}
   - component: {fileID: 1236419640}
+  - component: {fileID: 1236419645}
   m_Layer: 0
-  m_Name: Enemy2
+  m_Name: Patroller2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7853,8 +7867,8 @@ MonoBehaviour:
   _waypoints:
   - {fileID: 418059278}
   - {fileID: 521406582}
+  _flipper: {fileID: 1236419645}
   _speed: 2
-  _enemySprite: {fileID: 1236419644}
 --- !u!95 &1236419641
 Animator:
   serializedVersion: 5
@@ -7990,6 +8004,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1236419645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236419638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030a55d38bd043f448358900cae02dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1338355735
 GameObject:
   m_ObjectHideFlags: 0
@@ -8650,8 +8676,9 @@ GameObject:
   - component: {fileID: 1418461278}
   - component: {fileID: 1418461277}
   - component: {fileID: 1418461276}
+  - component: {fileID: 1418461281}
   m_Layer: 0
-  m_Name: Enemy3
+  m_Name: Patroller3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8770,8 +8797,8 @@ MonoBehaviour:
   _waypoints:
   - {fileID: 1025901057}
   - {fileID: 1999991157}
+  _flipper: {fileID: 1418461281}
   _speed: 2
-  _enemySprite: {fileID: 1418461280}
 --- !u!212 &1418461280
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8824,6 +8851,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1418461281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418461274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030a55d38bd043f448358900cae02dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1756093683
 GameObject:
   m_ObjectHideFlags: 0
@@ -8840,8 +8879,11 @@ GameObject:
   - component: {fileID: 1756093690}
   - component: {fileID: 1756093689}
   - component: {fileID: 1756093688}
+  - component: {fileID: 1756093696}
   - component: {fileID: 1756093687}
-  - component: {fileID: 1756093693}
+  - component: {fileID: 1756093694}
+  - component: {fileID: 1756093695}
+  - component: {fileID: 1756093697}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -8952,8 +8994,9 @@ MonoBehaviour:
   _groundDetector: {fileID: 1756093689}
   _inputReciever: {fileID: 1756093690}
   _mover: {fileID: 1756093688}
-  _characterSprite: {fileID: 1756093685}
-  _animationController: {fileID: 1756093693}
+  _jumper: {fileID: 1756093696}
+  _flipper: {fileID: 1756093695}
+  _playerAnimator: {fileID: 1756093697}
 --- !u!114 &1756093688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8967,7 +9010,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 100
-  _jumpForce: 275
 --- !u!114 &1756093689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9028,7 +9070,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1756093683}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4a29f8d80dd113145a32278575d535f7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9054,7 +9096,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0057256413, y: -0.027195035}
   m_Size: {x: 0.2398469, y: 0.2598848}
   m_Direction: 0
---- !u!114 &1756093693
+--- !u!114 &1756093694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9063,7 +9105,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 1756093683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2e57efd53a89f46b03b8fef6c95109, type: 3}
+  m_Script: {fileID: 11500000, guid: 52a9f562554fdf1488168283aed2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1756093695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756093683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030a55d38bd043f448358900cae02dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1756093696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756093683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef91155e9b6dc014281d6cb5d8abcd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpForce: 250
+--- !u!114 &1756093697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756093683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50f6c64b2b5fa349866cbd08d9521c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1815582310

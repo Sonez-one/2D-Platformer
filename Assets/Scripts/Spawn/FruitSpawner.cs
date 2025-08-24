@@ -4,7 +4,7 @@ using UnityEngine;
 public class FruitSpawner : MonoBehaviour
 {
     [SerializeField] private List<FruitSpawnPoint> _spawnPoints;
-    [SerializeField] private FruitPickUp _fruitPrefab;
+    [SerializeField] private Fruit _fruitPrefab;
 
     private void Start()
     {
