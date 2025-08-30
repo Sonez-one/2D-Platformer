@@ -19,4 +19,10 @@ public class PlayerAnimator : MonoBehaviour
     {
         _animator.SetBool(PlayerAnimatorData.Params.IsMoving, isMoving);
     }
+
+    public void SetupAttack(bool isAttack)
+    {
+        if (isAttack)
+            _animator.SetTrigger(PlayerAnimatorData.Params.IsAttack);
+    }
 }

@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Patroller : MonoBehaviour
 {
+    private readonly float _distanceToTarget = 0.2f;
+
     [SerializeField] private Transform[] _waypoints;
     [SerializeField] private Flipper _flipper;
 
     private int _nextWaypointIdex;
-
-    private readonly float _offset = 0.2f;
 
     public Transform NextTarget => _waypoints[_nextWaypointIdex];
 
@@ -18,7 +18,7 @@ public class Patroller : MonoBehaviour
 
     public void SearchNextWaypoint()
     {
-        if (Vector2.Distance(transform.position, _waypoints[_nextWaypointIdex].position) < _offset)
+        if (IsTargetReached())
         {
             if (_nextWaypointIdex == 0)
                 _nextWaypointIdex++;
@@ -27,5 +27,10 @@ public class Patroller : MonoBehaviour
         }
 
         _flipper.Flip(_nextWaypointIdex == 0);
+    }
+
+    private bool IsTargetReached()
+    {
+        return transform.position.IsEnoughClose(_waypoints[_nextWaypointIdex].position, _distanceToTarget);
     }
 }

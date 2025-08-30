@@ -6,5 +6,6 @@ public static class PlayerAnimatorData
     {
         public static readonly int IsMoving = Animator.StringToHash(nameof(IsMoving));
         public static readonly int IsJumping = Animator.StringToHash(nameof(IsJumping));
+        public static readonly int IsAttack = Animator.StringToHash(nameof(IsAttack));
     }
 }

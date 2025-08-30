@@ -18,7 +18,6 @@ public class InputReciever : MonoBehaviour
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.E))
             _isAttack = true;
-
     }
 
     public bool GetIsJump() => GetBoolAsTrigger(ref _isJump);

@@ -1,15 +1,14 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    private readonly float _maxValue = 100f;
+
     [SerializeField] private float _value;
 
     public event Action HealthValueChanged;
     public event Action Died;
-
-    private readonly float _maxValue = 100f;
 
     private void Start()
     {

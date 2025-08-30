@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private GroundDetector _groundDetector;
+    [SerializeField] private JumpSurfaceDetector _surafaceDetector;
     [SerializeField] private InputReciever _inputReciever;
     [SerializeField] private Mover _mover;
     [SerializeField] private Jumper _jumper;
@@ -12,8 +12,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Health _health;
     [SerializeField] private PlayerAnimator _playerAnimator;
 
+    private bool IsAttack;
+
     private bool IsMoving => _inputReciever.Direction != 0;
-    private bool IsJumping => !_groundDetector.IsGround;
+    private bool IsJumping => !_surafaceDetector.IsJumpable;
     private bool IsFacingLeft => _inputReciever.Direction < 0;
 
     private void Update()
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
         _flipper.Flip(IsFacingLeft);
         _playerAnimator.SetupRun(IsMoving);
         _playerAnimator.SetupJump(IsJumping);
+        _playerAnimator.SetupAttack(IsAttack);
     }
 
     private void FixedUpdate()
@@ -53,7 +56,7 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        if (_inputReciever.GetIsJump() && _groundDetector.IsGround)
+        if (_inputReciever.GetIsJump() && _surafaceDetector.IsJumpable)
         {
             _jumper.Jump();
         }
@@ -63,7 +66,12 @@ public class Player : MonoBehaviour
     {
         if (_inputReciever.GetIsAttack())
         {
+            IsAttack = true;
             _attacker.Attack();
+        }
+        else
+        {
+            IsAttack = false;
         }
     }
 

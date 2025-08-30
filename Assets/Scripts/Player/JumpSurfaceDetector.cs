@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class GroundDetector : MonoBehaviour
+public class JumpSurfaceDetector : MonoBehaviour
 {
-    public bool IsGround { get; private set; }
+    public bool IsJumpable { get; private set; }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent<Ground>(out _) || collision.gameObject.TryGetComponent<Enemy>(out _))
-            IsGround = true;
+            IsJumpable = true;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent<Ground>(out _) || collision.gameObject.TryGetComponent<Enemy>(out _))
-            IsGround = false;
+            IsJumpable = false;
     }
 }

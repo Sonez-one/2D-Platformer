@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
+    private readonly float _detectionRadius = 2f;
+
     [SerializeField] private float _damage;
     [SerializeField] private LayerMask _enemyLayer;
 
     private Collider2D[] _enemyColliders;
-
-    private readonly float _detectionRadius = 2f;
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class Attacker : MonoBehaviour
     {
         if (Physics2D.OverlapCircleNonAlloc(transform.position, _detectionRadius, _enemyColliders, _enemyLayer) > 0)
         {
-            if (_enemyColliders[0].TryGetComponent<Health>(out Health health))
+            if (_enemyColliders[0].TryGetComponent(out Health health))
             {
                 health.TakeDamage(_damage);
             }
