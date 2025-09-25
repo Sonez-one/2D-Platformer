@@ -1,14 +1,35 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SmoothHealthSlider : HealthBarView
+public class SmoothHealthSlider : MonoBehaviour
 {
     private readonly float _barSpeed = 0.5f;
 
+    [SerializeField] private Health _health;
+
+    private Slider _bar;
     private Coroutine _coroutine;
     private float _currentValue;
 
-    protected override void UpdateHealthValue(float currentValue)
+    private void Awake()
+    {
+        _bar = GetComponent<Slider>();
+    }
+
+    private void OnEnable()
+    {
+        _health.ValueChanged += UpdateHealthValue;
+        _health.Died += Died;
+    }
+
+    private void OnDisable()
+    {
+        _health.ValueChanged -= UpdateHealthValue;
+        _health.Died -= Died;
+    }
+
+    private void UpdateHealthValue(float currentValue)
     {
         _currentValue = currentValue;
 
@@ -16,6 +37,11 @@ public class SmoothHealthSlider : HealthBarView
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(SmoothlySetValue());
+    }
+
+    private void Died()
+    {
+        OnDisable();
     }
 
     private IEnumerator SmoothlySetValue()

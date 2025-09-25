@@ -3,23 +3,25 @@ using UnityEngine;
 
 public class InputReciever : MonoBehaviour
 {
-    public const string Horizontal = nameof(Horizontal);
+    private const string Horizontal = nameof(Horizontal);
+    private const KeyCode Jump = KeyCode.W;
+    private const KeyCode Attack = KeyCode.E;
 
     private bool _isJump;
+
+    public event Action AttackButtonPressed;
 
     public float Direction { get; private set; }
     public bool IsAttack { get; private set; }
    
-    public event Action AttackButtonPressed;
-
-    public void Input()
+    public void ReadInput()
     {
-        Direction = UnityEngine.Input.GetAxis(Horizontal);
+        Direction = Input.GetAxis(Horizontal);
 
-        if (UnityEngine.Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(Jump))
             _isJump = true;
 
-        if (UnityEngine.Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(Attack))
         {
             IsAttack = true;
 
@@ -31,7 +33,8 @@ public class InputReciever : MonoBehaviour
         }
     }
 
-    public bool GetIsJump() => GetBoolAsTrigger(ref _isJump);
+    public bool GetIsJump() => 
+        GetBoolAsTrigger(ref _isJump);
 
     private bool GetBoolAsTrigger(ref bool value)
     {

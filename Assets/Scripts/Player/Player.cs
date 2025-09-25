@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _inputReciever.Input();
+        _inputReciever.ReadInput();
         _flipper.Flip(IsFacingLeft);
         _playerAnimator.SetupRun(IsMoving);
         _playerAnimator.SetupJump(IsJumping);
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     {
         _inputReciever.AttackButtonPressed += Attack;
         _itemPeaker.HealthRestoring += RestoreHealth;
+        _itemPeaker.LootCollected += CollectLoot;
         _health.Died += Die;
     }
 
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
     {
         _inputReciever.AttackButtonPressed -= Attack;
         _itemPeaker.HealthRestoring -= RestoreHealth;
+        _itemPeaker.LootCollected -= CollectLoot;
         _health.Died -= Die;
     }
 
@@ -70,6 +72,11 @@ public class Player : MonoBehaviour
     private void RestoreHealth(float restoringValue)
     {
         _health.RestoreValue(restoringValue);
+    }
+
+    private void CollectLoot(CollectableObject collectableObject)
+    {
+        collectableObject.Collect();
     }
 
     private void Die()
