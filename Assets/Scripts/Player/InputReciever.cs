@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class InputReciever : MonoBehaviour
@@ -5,9 +6,11 @@ public class InputReciever : MonoBehaviour
     public const string Horizontal = nameof(Horizontal);
 
     private bool _isJump;
-    private bool _isAttack;
 
     public float Direction { get; private set; }
+    public bool IsAttack { get; private set; }
+   
+    public event Action AttackButtonPressed;
 
     public void Input()
     {
@@ -17,11 +20,18 @@ public class InputReciever : MonoBehaviour
             _isJump = true;
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.E))
-            _isAttack = true;
+        {
+            IsAttack = true;
+
+            AttackButtonPressed?.Invoke();
+        }
+        else
+        {
+            IsAttack = false;
+        }
     }
 
     public bool GetIsJump() => GetBoolAsTrigger(ref _isJump);
-    public bool GetIsAttack() => GetBoolAsTrigger(ref _isAttack);
 
     private bool GetBoolAsTrigger(ref bool value)
     {

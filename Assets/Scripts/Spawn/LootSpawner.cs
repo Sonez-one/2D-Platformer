@@ -9,12 +9,12 @@ public class LootSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        _itemPeaker.OnLootCollected += Collect;
+        _itemPeaker.LootCollected += Collect;
     }
 
     private void OnDisable()
     {
-        _itemPeaker.OnLootCollected -= Collect;
+        _itemPeaker.LootCollected -= Collect;
     }
 
     private void Start()

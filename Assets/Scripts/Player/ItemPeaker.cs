@@ -4,7 +4,7 @@ using System;
 public class ItemPeaker : MonoBehaviour
 {
     public event Action<float> HealthRestoring;
-    public event Action<CollectableObject> OnLootCollected;
+    public event Action<CollectableObject> LootCollected;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,11 +13,11 @@ public class ItemPeaker : MonoBehaviour
             if (collectableObject is HealthyFruit healthyFruit)
             {
                 HealthRestoring?.Invoke(healthyFruit.RestoringHealthValue);
-                OnLootCollected?.Invoke(healthyFruit);
+                LootCollected?.Invoke(healthyFruit);
             }
             else if (collectableObject is Coin coin)
             {
-                OnLootCollected?.Invoke(coin);
+                LootCollected?.Invoke(coin);
             }
         }
     }

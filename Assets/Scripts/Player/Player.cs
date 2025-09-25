@@ -12,10 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Health _health;
     [SerializeField] private PlayerAnimator _playerAnimator;
 
-    private bool IsAttack;
-
     private bool IsMoving => _inputReciever.Direction != 0;
     private bool IsJumping => !_surafaceDetector.IsJumpable;
+    private bool IsAttacking => _inputReciever.IsAttack;
     private bool IsFacingLeft => _inputReciever.Direction < 0;
 
     private void Update()
@@ -24,24 +23,25 @@ public class Player : MonoBehaviour
         _flipper.Flip(IsFacingLeft);
         _playerAnimator.SetupRun(IsMoving);
         _playerAnimator.SetupJump(IsJumping);
-        _playerAnimator.SetupAttack(IsAttack);
+        _playerAnimator.SetupAttack(IsAttacking);
     }
 
     private void FixedUpdate()
     {
         Run();
         Jump();
-        Attack();
     }
 
     private void OnEnable()
     {
+        _inputReciever.AttackButtonPressed += Attack;
         _itemPeaker.HealthRestoring += RestoreHealth;
         _health.Died += Die;
     }
 
     private void OnDisable()
     {
+        _inputReciever.AttackButtonPressed -= Attack;
         _itemPeaker.HealthRestoring -= RestoreHealth;
         _health.Died -= Die;
     }
@@ -64,15 +64,7 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        if (_inputReciever.GetIsAttack())
-        {
-            IsAttack = true;
-            _attacker.Attack();
-        }
-        else
-        {
-            IsAttack = false;
-        }
+        _attacker.Attack();
     }
 
     private void RestoreHealth(float restoringValue)
