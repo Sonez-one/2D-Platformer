@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] private ItemPeaker _itemPeaker;
     [SerializeField] private Health _health;
     [SerializeField] private PlayerAnimator _playerAnimator;
+    [SerializeField] private Vampirism _vampirismAbility;
+    [SerializeField] private float _damage;
 
     private bool IsMoving => _inputReciever.Direction != 0;
     private bool IsJumping => !_surafaceDetector.IsJumpable;
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         _inputReciever.AttackButtonPressed += Attack;
+        _inputReciever.VampirismButtonPressed += UseAbility;
         _itemPeaker.HealthRestoring += RestoreHealth;
         _itemPeaker.LootCollected += CollectLoot;
         _health.Died += Die;
@@ -43,6 +46,7 @@ public class Player : MonoBehaviour
     private void OnDisable()
     {
         _inputReciever.AttackButtonPressed -= Attack;
+        _inputReciever.VampirismButtonPressed -= UseAbility;
         _itemPeaker.HealthRestoring -= RestoreHealth;
         _itemPeaker.LootCollected -= CollectLoot;
         _health.Died -= Die;
@@ -64,9 +68,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void UseAbility()
+    {
+        _vampirismAbility.Use();
+    }
+
     private void Attack()
     {
-        _attacker.Attack();
+        _attacker.Attack(_damage);
     }
 
     private void RestoreHealth(float restoringValue)

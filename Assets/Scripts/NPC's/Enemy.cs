@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Attacker _attacker;
     [SerializeField] private EnemyAnimator _enemyAnimator;
     [SerializeField] private Chaser _chaser;
+    [SerializeField] private float _damage;
 
     private void OnEnable()
     {
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
 
         while (enabled)
         {
-            _attacker.Attack();
+            _attacker.Attack(_damage);
 
             yield return wait;
         }
